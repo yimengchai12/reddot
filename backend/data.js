@@ -114,3 +114,48 @@ const caseData = [
         "ClientId": 4
     }
 ];
+
+
+
+const staffData = [
+    {
+      "name": "Johnny Appleseed",
+      "address": "23 Main St, New York, NY 10001"
+    },
+    {
+      "name": "Alice Johnson",
+      "address": "45 Elm St, Los Angeles, CA 90001"
+    },
+    {
+      "name": "Bob Smith",
+      "address": "67 Oak St, Chicago, IL 60001"
+    },
+    {
+      "name": "Ella Davis",
+      "address": "89 Maple St, San Francisco, CA 94101"
+    },
+    {
+      "name": "David Wilson",
+      "address": "12 Pine St, Boston, MA 02101"
+    },
+    {
+      "name": "Olivia Garcia",
+      "address": "34 Cedar St, Miami, FL 33101"
+    },
+    {
+      "name": "James Brown",
+      "address": "56 Birch St, Houston, TX 77001"
+    },
+    {
+      "name": "Sophia Martinez",
+      "address": "78 Spruce St, Seattle, WA 98101"
+    },
+    {
+      "name": "Liam Rodriguez",
+      "address": "90 Willow St, Denver, CO 80201"
+    },
+    {
+      "name": "Emma Lopez",
+      "address": "43 Sycamore St, Philadelphia, PA 19101"
+    }
+  ];

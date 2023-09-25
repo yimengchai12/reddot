@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         age: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
         },
         address: {
             type: DataTypes.STRING(200),
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Clients.associate = (models) => {
         Clients.hasMany(models.Cases, {
-            onDelete: "cascade",
+            onDelete: "CASCADE"
         });
     };
 

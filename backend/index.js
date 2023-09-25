@@ -13,6 +13,8 @@ app.use("/clients", clientRouter);
 const caseRouter = require("./routes/Cases");
 app.use("/cases", caseRouter);
 
+const staffRouter = require("./routes/Staffs");
+app.use("/staffs", staffRouter);
 
 // const db = mysql.createConnection({
 //     host: "localhost",

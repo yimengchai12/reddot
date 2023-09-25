@@ -12,18 +12,5 @@ module.exports = (sequelize, DataTypes) => {
         },
     });
 
-    Cases.associate = (models) => {
-        Cases.belongsTo(models.Clients, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-        Cases.belongsTo(models.Staffs, {
-            foreignKey: {
-                allowNull: true
-            }
-        });
-    };
-
     return Cases;
 }
