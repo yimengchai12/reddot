@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
 //get cases belonging to a clientid
 router.get("/getclient/:clientId", async (req, res) => {
     const clientId = req.params.clientId;
-    const clientCases = await Cases.findAll({where: {ClientId: clientId}});
-    res.json(clientCases);
+        const clientCases = await Cases.findAll({where: {ClientId: clientId}});
+    return res.json(clientCases);
 });
 
 // create case
@@ -26,27 +26,17 @@ router.post("/",  async (req, res) => {
     res.json(newCase);
 });
 
-//assign a staff to a case 
-router.put("/updateStaff", async (req, res) => {
-    const caseId = req.body.caseId;
-    const assignStaffId = req.body.assignStaffId;
-    updatedCase = await Cases.update({StaffId: assignStaffId}, {where: {id: caseId}});
-    res.json(updatedCase);
-});
-
-// update a case status
-router.put("/updateStatus", async (req, res) => {
-    const caseId = req.body.caseId;
-    const status = req.body.status;
-    updatedCase = await Cases.update({status: status}, {where: {id: caseId}});
-    res.json(updatedCase);
-});
-
+//update a case assigned staff or status 
 // put request json body:
 // {
-//     "caseId": 1,
-//     "assignStaffId": 2
+//     "StaffId": 2,
+//     "status": "Completed"
 // }
+router.put("/:caseId", async (req, res) => {
+    const caseId = req.params.caseId;
+    updatedCase = await Cases.update(req.body, {where: {id: caseId}});
+    res.json(updatedCase);
+});
 
 // create multiple cases
 router.post("/multiple",  async (req, res) => {
@@ -63,8 +53,8 @@ router.get("/completed", async (req, res) => {
 
 
 //get pending cases
-router.get("/pending", async (req, res) => {
-    const pendingCases = await Cases.findAll({where: {status: "Pending"}});
+router.get("/inprogress", async (req, res) => {
+    const pendingCases = await Cases.findAll({where: {status: "In Progress"}});
     res.json(pendingCases);
 });
 

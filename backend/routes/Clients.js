@@ -40,7 +40,7 @@ router.delete("/:clientId", async (req, res) => {
 // post requestion json body:
 // {
 //     "name": "John Doe",
-//     "birthdate": "1993-01-01", (date format)
+//     "birthdate": "2016-01-01T00:00:00-06:00", (date moment format)
 //     "age": 30,
 //     "address": "123 Main St, New York, NY 10001",
 //     "company": "ABC Company"

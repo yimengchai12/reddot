@@ -16,17 +16,28 @@ router.get("/:staffId", async (req, res) => {
 });
 
 // create staff
+// post requestion json body: 
+// {   
+//     "name": "Johnny Appleseed",
+//     "address": "23 Main St, New York, NY 10001"
+// }
 router.post("/",  async (req, res) => {
     const staff = req.body;
     await Staffs.create(staff);
     res.json(staff);
 });
 
-// post requestion json body: 
-// {   
-//     "name": "Johnny Appleseed",
-//     "address": "23 Main St, New York, NY 10001"
-// }
+// delete staff 
+router.delete("/:staffId", async (req, res) => {
+    const staffId = req.params.staffId;
+    await Staffs.destroy({
+        where: {
+            id: staffId
+        }
+    });
+    res.json("DELETED");
+});
+
 
 
 // create multiple staffs

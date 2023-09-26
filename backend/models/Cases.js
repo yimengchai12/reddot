@@ -2,13 +2,16 @@ module.exports = (sequelize, DataTypes) => {
 
     const Cases = sequelize.define('Cases', {
         status: {
-            type: DataTypes.STRING(90),
+            type: DataTypes.ENUM('In Progress', 'Completed'),
             allowNull: false,
-            defaultValue: "Pending"
+            defaultValue: "In Progress",
+            validate: {isIn : [['In Progress', 'Completed']]}
+
         },
         message:{
             type: DataTypes.STRING(255),
             allowNull: false,
+            validate: {notEmpty: true}
         },
     });
 

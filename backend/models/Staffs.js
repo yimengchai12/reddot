@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Staffs.associate = (models) => {
         Staffs.hasMany(models.Cases, {
-            onDelete: "cascade",
+            onDelete: "SET NULL",
         });
     };
 
