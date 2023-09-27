@@ -23,7 +23,7 @@ node data.js
 
 ### ERD diagram 
 
-![ERD diagram](backend/erd.png)
+![ERD diagram](backend/ERD.png)
 
 
 ### Technology used 
