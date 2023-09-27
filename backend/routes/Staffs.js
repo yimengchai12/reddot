@@ -4,23 +4,18 @@ const { Staffs } = require("../models");
 
 //get list of staffs
 router.get("/", async (req, res) => {
-    const listOfStaffs = await Staff.findAll();
+    const listOfStaffs = await Staffs.findAll();
     res.json(listOfStaffs);
 });
 
 // get staff by id
 router.get("/:staffId", async (req, res) => {
     const staffId = req.params.staffId;
-    const staffCases = await Cases.findAll({where: {StaffId: staffId}});
-    res.json(staffCases);
+    const staff = await Staffs.findByPk(staffId);
+    res.json(staff);
 });
 
-// create staff
-// post requestion json body: 
-// {   
-//     "name": "Johnny Appleseed",
-//     "address": "23 Main St, New York, NY 10001"
-// }
+// create a staff
 router.post("/",  async (req, res) => {
     const staff = req.body;
     await Staffs.create(staff);

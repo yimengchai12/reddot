@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
 
         },
         message:{
-            type: DataTypes.STRING(255),
+            type: DataTypes.STRING(250),
             allowNull: false,
             validate: {notEmpty: true}
         },

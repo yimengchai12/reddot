@@ -36,22 +36,14 @@ router.delete("/:clientId", async (req, res) => {
 });
 
 
-// create client 
-// post requestion json body:
-// {
-//     "name": "John Doe",
-//     "birthdate": "2016-01-01T00:00:00-06:00", (date moment format)
-//     "age": 30,
-//     "address": "123 Main St, New York, NY 10001",
-//     "company": "ABC Company"
-// }
+// create a client 
 router.post("/",  async (req, res) => {
     const client = req.body;
     await Clients.create(client);
     res.json(client);
 });
 
-// create multiple clients 
+// Bulk create clients 
 router.post("/multiple",  async (req, res) => {
     const clientlist = req.body;
     await Clients.bulkCreate(clientlist);

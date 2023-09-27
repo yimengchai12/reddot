@@ -1,10 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const { Cases } = require("../models");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
+//get list of cases
 router.get("/", async (req, res) => {
     const listOfCases = await Cases.findAll();
     res.json(listOfCases);
+});
+
+// get case by id
+router.get("/:caseId", async (req, res) => {
+    const caseId = req.params.caseId;
+    const caseObj = await Cases.findByPk(caseId);
+    res.json(caseObj);
 });
 
 //get cases belonging to a clientid
@@ -15,11 +25,6 @@ router.get("/getclient/:clientId", async (req, res) => {
 });
 
 // create case
-// post requestion json body: 
-// {   
-//     "message": "I need help with my case",
-//     "ClientId": 1,
-// }
 router.post("/",  async (req, res) => {
     const newCase = req.body;
     await Cases.create(newCase);
@@ -27,11 +32,6 @@ router.post("/",  async (req, res) => {
 });
 
 //update a case assigned staff or status 
-// put request json body:
-// {
-//     "StaffId": 2,
-//     "status": "Completed"
-// }
 router.put("/:caseId", async (req, res) => {
     const caseId = req.params.caseId;
     updatedCase = await Cases.update(req.body, {where: {id: caseId}});
@@ -53,9 +53,9 @@ router.get("/completed", async (req, res) => {
 
 
 //get pending cases
-router.get("/inprogress", async (req, res) => {
-    const pendingCases = await Cases.findAll({where: {status: "In Progress"}});
-    res.json(pendingCases);
+router.get("/outstanding", async (req, res) => {
+    const outstandingCases = await Cases.findAll({where: {status: {[Op.not]: "Completed"}}});
+    res.json(outstandingCases);
 });
 
 //get cases belonging to a staffid
